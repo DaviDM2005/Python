@@ -13,17 +13,6 @@ while True:
     bot_hello_list = ["Hi","Hello","Heyy","Hey"]
     you_hello_list = ["hi","hello!","hello","heyy","hey"]
 
-    # if "search" in user_input or "who is":
- 
-    #     replaces = {"please" : "", "search" : "", "who" : "", "is" : ""}
-
-    #     searcher = re.sub("|".join(replaces.keys()), lambda match: replaces[match.string[match.start():match.end()]], user_input)
-
-    #     print(f"Chatbot: Here are some links about: {start_input}\n")
-
-    #     for url in search(searcher, num = 10, stop = 20, pause = 2):
-    #         print(url)
-    #     print("\n")
 
     if user_input in you_hello_list:
         hello = random.choice(bot_hello_list)
@@ -64,6 +53,7 @@ while True:
     elif user_input == "ok" or user_input == "okay":
         print("Jarvis: Well, How can I help you?")
 
+        
     elif user_input == "howareyou":
         print("Jarvis: Feels good, thank you.")
 
@@ -99,6 +89,18 @@ while True:
         except SyntaxError:
             print("Chatbot: I found an error. I can't calculate.")
 
+    elif "search" in user_input or ("who" in user_input and "is" in user_input):
+ 
+        replaces = {"please" : "", "search" : ""}
+
+        searcher = re.sub("|".join(replaces.keys()), lambda match: replaces[match.string[match.start():match.end()]], user_input)
+
+        print(f"Chatbot: Here are some links about: {start_input}\n")
+
+        for url in search(searcher, num = 10, stop = 20, pause = 2):
+            print(url)
+        print("\n")
+        
     elif user_input == "bye":
         print("Jarvis: Goodbye!\n")
         break
